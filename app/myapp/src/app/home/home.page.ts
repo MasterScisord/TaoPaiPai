@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras,  } from '@angular/router';
 import { AutentificarService } from '../Servicio/autentificacion.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class HomePage {
         let navigationExtras: NavigationExtras = {
           state: { user: this.user }
         }
-        this.router.navigate(['/mapa'], navigationExtras);
+        this.router.navigate(['/bienvenida'], navigationExtras);
       } else {
         this.mensaje = "Debe ingresar sus credenciales";
       }

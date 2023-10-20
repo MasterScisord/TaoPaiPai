@@ -10,9 +10,31 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 })
 export class BienvenidaPage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private activatedRouter: ActivatedRoute) {}
 
-  ngOnInit() {
+  public user = {
+    user: "",
+    password: ""}
+    ngOnInit() {
+      this.activatedRouter.queryParams.subscribe(() => {
+        let state = this.router.getCurrentNavigation()?.extras.state;
+        if (state) {
+          this.user.user = state['user'].user;
+          this.user.password = state['user'].password;
+          console.log(this.user);
+  
+        }
+  
+  
+      })
+
+  
+  
+  
+  
+  
+  
+  
   }
 
 }
