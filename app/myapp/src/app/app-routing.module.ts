@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'bienvenida',
     loadChildren: () => import('./bienvenida/bienvenida.module').then( m => m.BienvenidaPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./Error/error/error.module').then( m => m.ErrorPageModule)
+  },
+
 ];
 
 @NgModule({
