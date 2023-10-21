@@ -1,44 +1,41 @@
 import { Component } from '@angular/core';
-import { Router, NavigationExtras,  } from '@angular/router';
-import { AutentificarService } from '../Servicio/autentificacion.service';
+import { AuthService } from '../Servicio/auth.service';
+import { User } from '../Servicio/user.model'; // Importa la interfaz User
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  styleUrls: ['home.page.scss']
 })
 export class HomePage {
+  user: User = {
+    username: '',
+    password: ''
+  };
 
-  constructor(private router:Router, private auth:AutentificarService) {
-
-
-  }
-  user = {user:"", password:""}
-
-  public mensaje ="";
-
-  
+  constructor(private authService: AuthService, private router: Router) {} // Inyecta el Router
 
   enviarLogin() {
-    this.auth.login(this.user.user, this.user.password).then(() => {
-      if (this.auth.autentificado) {
-        let navigationExtras: NavigationExtras = {
-          state: { user: this.user }
-        }
-        this.router.navigate(['/bienvenida'], navigationExtras);
+    this.authService.authenticate(this.user.username, this.user.password).subscribe((result: User[]) => {
+      if (result.length > 0) {
+        // Usuario autenticado con éxito, redirige a la página "bienvenida"
+        const username = result[0].username;
+        console.log('Usuario autenticado con éxito');
+        this.router.navigate(['/bienvenida', { username: username }]);
+
       } else {
-        this.mensaje = "Debe ingresar sus credenciales";
+        // Usuario no autenticado, muestra un mensaje de error
+        console.log('Error de autenticación');
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+

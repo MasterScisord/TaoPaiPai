@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
-
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida',
@@ -9,32 +7,18 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
   styleUrls: ['./bienvenida.page.scss'],
 })
 export class BienvenidaPage implements OnInit {
+  public username: string = ''; // Inicializa username con un valor predeterminado
 
-  constructor(private router:Router, private activatedRouter: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
-  public user = {
-    user: "",
-    password: ""}
-    ngOnInit() {
-      this.activatedRouter.queryParams.subscribe(() => {
-        let state = this.router.getCurrentNavigation()?.extras.state;
-        if (state) {
-          this.user.user = state['user'].user;
-          this.user.password = state['user'].password;
-          console.log(this.user);
-  
-        }
-  
-  
-      })
-
-  
-  
-  
-  
-  
-  
-  
+  ngOnInit() {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.username = params.get('username') ?? ''; // Asigna un valor predeterminado si es null
+    });
   }
-
 }
+  
+  
+  
+  
+  
