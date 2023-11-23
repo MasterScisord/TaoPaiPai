@@ -19,7 +19,7 @@
     </div>
     <ion-label class="nom" color="warning">Bienvenido, {{ username }}</ion-label> <!-- Muestra el nombre de usuario  aaaaa-->
     <div class="arrow-container">
-      <img class="flecha" src="../../assets/icon/flechaA.png" alt="">
+      <img (click)="escanearQR()" class="cam" src="../../assets/icon/camera.png" alt="">
     </div>
   </ion-content>
 </ion-content>
