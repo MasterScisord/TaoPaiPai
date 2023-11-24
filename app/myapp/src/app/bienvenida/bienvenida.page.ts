@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular'; // Importa NavController
 import { Capacitor } from '@capacitor/core';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';  // Importa BarcodeScanner
+import { BarcodeScanner} from '@capacitor-community/barcode-scanner';  // Importa BarcodeScanner
 import { Plugins } from '@capacitor/core';
 
 import { NavigationExtras } from '@angular/router';

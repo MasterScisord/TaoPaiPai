@@ -18,3 +18,4 @@ import { BienvenidaPage } from './bienvenida.page';
   declarations: [BienvenidaPage]
 })
 export class BienvenidaPageModule {}
+
